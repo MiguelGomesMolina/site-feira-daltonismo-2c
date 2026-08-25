@@ -1,122 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segurança Digital para Idosos</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Óptica na Escola - Feira de Ciências</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- MENU DE ACESSIBILIDADE -->
-    <nav class="barra-acessibilidade" aria-label="Controles de Acessibilidade">
-        <button id="btnAumentaTexto" class="botao-controle" title="Aumentar texto">A+</button>
-        <button id="btnDiminuiTexto" class="botao-controle" title="Diminuir texto">A-</button>
-        <button id="btnVoz" class="botao-controle botao-leitura" >🔊</button>
-    </nav>
+  <!-- Barra Fixa de Acessibilidade -->
+  <header class="accessibility-bar" role="banner">
+    <div class="accessibility-container">
+      <span class="bar-title">Acessibilidade:</span>
+      <div class="accessibility-buttons">
+        <button onclick="changeFontSize(1)" aria-label="Aumentar o tamanho do texto">A+</button>
+        <button onclick="changeFontSize(-1)" aria-label="Diminuir o tamanho do texto">A-</button>
+        <button onclick="toggleSpeech()" id="btn-speech" aria-label="Ouvir conteúdo da página em voz alta">
+          🔊 Ouvir Texto
+        </button>
+      </div>
+    </div>
+  </header>
 
-    <main>
+  <!-- Conteúdo Principal -->
+  <main class="main-content" id="conteudo-principal">
+    
+    <header class="site-header">
+      <h1>Óptica na Escola: A Física da Luz</h1>
+      <p class="subtitle">Descubra como a luz se propaga, reflete, refrata e forma as cores ao nosso redor.</p>
+    </header>
 
-        <!-- 1. INÍCIO -->
-        <section class="banner">
-            <h1>Guia de Segurança Digital</h1>
-            <p style="margin-bottom: 30px;">Proteja-se e navegue com tranquilidade.</p>
-            <a href="#contato-ajuda" class="botao-ajuda">PRECISO DE AJUDA AGORA</a>
-        </section>
+    <!-- Introdução -->
+    <section class="card-section">
+      <h2>O que é Óptica?</h2>
+      <p>
+        A Óptica é o ramo da Física encarregado de estudar a luz e os fenômenos luminosos. 
+        Ela divide-se principalmente em <strong>Óptica Geométrica</strong> (estudo da trajetória dos raios de luz) 
+        e <strong>Óptica Física</strong> (estudo da natureza ondulatória da luz).
+      </p>
+    </section>
 
-        <div class="conteudo">
+    <!-- Espaço para Vídeo -->
+    <section class="card-section video-section">
+      <h2>Vídeo Explicativo</h2>
+      <p>Assista ao vídeo para entender os conceitos básicos de reflexão e refração:</p>
+      <div class="video-responsive">
+        <iframe 
+          src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" 
+          title="Vídeo educativo sobre Óptica no Ensino Médio" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
 
-            <div class="modal-fundo">
+    <!-- Espaço para Galeria de Imagens -->
+    <section class="card-section gallery-section">
+      <h2>Experimentos e Fenômenos Ópticos</h2>
+      <div class="image-grid">
+        <figure class="image-item">
+          <img src="https://via.placeholder.com/400x250?text=Reflexao+e+Especulos" alt="Representação dos raios incidentes e refletidos em um espelho plano">
+          <figcaption>Reflexão da Luz em Espelhos Planos</figcaption>
+        </figure>
+        <figure class="image-item">
+          <img src="https://via.placeholder.com/400x250?text=Dispersao+em+Prisma" alt="Luz branca atravessando um prisma de vidro e se decompondo nas cores do arco-íris">
+          <figcaption>Dispersão da Luz e Formação do Arco-Íris</figcaption>
+        </figure>
+      </div>
+    </section>
 
-                <!-- SEÇÃO DE DESTINO DO BOTÃO DE AJUDA -->
-                <section id="contato-ajuda" style="margin-top: 60px; background: #eef;" class="modal-conteudo">
-                    <h2 style="margin-top: 0;">O que fazer agora?</h2>
-                    <p>Se você acha que caiu em um golpe ou está com medo de uma mensagem:</p>
-                    <ol>
-                        <li><strong>Pare tudo o que está fazendo.</strong></li>
-                        <li><strong>Ligue para um filho, neto ou amigo próximo.</strong></li>
-                        <li><strong>Ligue para o seu banco</strong> usando o número que está atrás do seu cartão.</li>
-                        <li><strong>Registre um Boletim de Ocorrência</strong> na delegacia mais próxima ou pela
-                            internet.
-                        </li>
-                    </ol>
-                    <button class="botao-ajuda botao-fechar">Fechar</button>
-                </section>
-            </div>
+    <!-- Espaço para Link Externo -->
+    <section class="card-section external-link-section">
+      <h2>Saiba Mais e Experimente</h2>
+      <p>Explore simulações físicas interativas sobre lentes, espelhos e refração da luz:</p>
+      <a href="https://phet.colorado.edu/pt_BR/simulations/filter?subjects=optics" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="external-btn" 
+         aria-label="Abrir simulações de óptica no site PhET Colorado em uma nova aba">
+        🌐 Abrir Simulações Interativas (PhET Colorado) ↗
+      </a>
+    </section>
 
+  </main>
 
-            <!-- 2. DICAS IMPORTANTES -->
-            <section id="dicas">
-                <h2>Dicas Importantes</h2>
-                <div class="grade-dicas">
-                    <div class="cartao-dica">
-                        <strong>1. Use senhas longas</strong>
-                        Prefira frases que você gosta em vez de apenas números. Exemplo: "EuAmoMinhaFamilia2024!".
-                    </div>
-                    <div class="cartao-dica">
-                        <strong>2. Desconfie de urgência</strong>
-                        Se alguém pedir dinheiro rápido dizendo que é emergência, pare e ligue para a pessoa antes.
-                    </div>
-                    <div class="cartao-dica">
-                        <strong>3. Não clique em tudo</strong>
-                        Links que prometem prêmios ou dinheiro fácil geralmente são armadilhas.
-                    </div>
-                </div>
-            </section>
+  <footer class="site-footer">
+    <p>Projeto para a Feira de Ciências — Óptica na Escola</p>
+  </footer>
 
-            <!-- 3. DIREITOS NA INTERNET -->
-            <section id="direitos">
-                <h2>Direitos na Internet</h2>
-                <div class="caixa-direitos">
-                    <p>Você sabia que no Brasil existe o <strong>Marco Civil da Internet</strong> e a
-                        <strong>LGPD</strong>?
-                        Essas leis garantem que você tenha direitos básicos no mundo digital:</p>
-                    <ul>
-                        <li><strong>Privacidade:</strong> Suas conversas e dados pessoais não podem ser expostos sem sua
-                            permissão.</li>
-                        <li><strong>Liberdade de Expressão:</strong> Você tem o direito de se manifestar, desde que não
-                            ofenda ninguém.</li>
-                        <li><strong>Proteção de Dados:</strong> Empresas devem cuidar bem das suas informações (nome,
-                            CPF,
-                            endereço).</li>
-                        <li><strong>Direito ao Esquecimento:</strong> Em alguns casos, você pode pedir que informações
-                            antigas sobre você sejam removidas.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- 4. COMO SABER SE ESTOU CAINDO EM UM GOLPE? -->
-            <section id="golpes">
-                <h2>Sinais de um Golpe</h2>
-                <p style="margin-bottom: 20px;">Fique atento a estas atitudes suspeitas:</p>
-                <ul class="alerta-golpe">
-                    <li><strong>Pedido de segredo:</strong> O golpista pede para você não contar para ninguém sobre a
-                        conversa ou a transação.</li>
-                    <li><strong>Erros de português:</strong> Mensagens de bancos ou empresas famosas com muitos erros de
-                        escrita são sinais claros de fraude.</li>
-                    <li><strong>Falso funcionário:</strong> Pessoas que ligam dizendo ser do banco e pedem para você
-                        confirmar sua senha ou entregar o cartão.</li>
-                    <li><strong>Número desconhecido com foto de conhecido:</strong> Alguém usa a foto de um parente seu
-                        e
-                        diz: "Mudei meu número, me faz um PIX?".</li>
-                </ul>
-            </section>
-
-
-
-        </div>
-
-        <footer>
-            <p><strong>Segurança Digital para a Melhor Idade</strong></p>
-            <p>Este guia é informativo. Nunca compartilhe sua senha com estranhos.</p>
-        </footer>
-    </main>
-
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>

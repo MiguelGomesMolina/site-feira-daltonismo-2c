@@ -1,242 +1,161 @@
 :root {
-    --primaria: #003366;
-    --secundaria: #ffcc00;
-    --perigo: #cc0000;
-    --texto: #1a1a1a;
-    --fundo: #ffffff;
-    --fundo-cartao: #f0f4f8;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  --primary-color: #0d47a1;
+  --secondary-color: #1976d2;
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-color: #212121;
+  --font-size-base: 16px;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    font-size: 22px;
-    /* Fonte aumentada para leitura */
-    line-height: 1.5;
-    color: var(--texto);
-    background-color: var(--fundo);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
 
-/* --- MENU DE ACESSIBILIDADE --- */
-.barra-acessibilidade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: #333;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    z-index: 1000;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+/* Barra de Acessibilidade */
+.accessibility-bar {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 8px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.botao-controle {
-    background: white;
-    color: #333;
-    border: 2px solid var(--secundaria);
-    padding: 10px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.accessibility-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.botao-controle:hover {
-    background: var(--secundaria);
+.accessibility-buttons {
+  display: flex;
+  gap: 8px;
 }
 
-.botao-leitura {
-    background: #28a745;
-    color: white;
-    border: none;
+.accessibility-buttons button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-/* 1. Início: Banner com Botão de Ajuda */
-.banner {
-    background-color: var(--primaria);
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-    border-bottom: 10px solid var(--secundaria);
+.accessibility-buttons button:hover {
+  background-color: var(--primary-color);
 }
 
-.banner h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    padding-top: 70px;
+/* Container de Conteúdo */
+.main-content {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 16px;
 }
 
-.botao-ajuda {
-    display: inline-block;
-    background-color: var(--perigo);
-    color: white;
-    padding: 20px 40px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    font-size: 1.5rem;
-    border: 4px solid white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
+.site-header {
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-.botao-ajuda:active {
-    transform: scale(0.95);
+.site-header h1 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
 }
 
-.conteudo {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+.card-section {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.modal-fundo {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+.card-section h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+  border-bottom: 2px solid var(--bg-color);
+  padding-bottom: 8px;
 }
 
-/* O que fazer agora? */
-.modal-conteudo {
-    background-color: #fff9e6;
-    padding: 40px;
-    border-radius: 15px;
-    border: 2px dashed var(--primaria);
-
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    max-width: 90%;
-    width: 600px;
-    margin: 0 !important;
+/* Container do Vídeo Responsivo */
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%; /* Proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #000;
 }
 
-ol {
-    padding: 40px;
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
-h2 {
-    color: var(--primaria);
-    border-bottom: 4px solid var(--secundaria);
-    margin: 40px 0 20px;
-    padding-bottom: 10px;
-    font-size: 2rem;
+/* Layout das Imagens */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
 }
 
-/* 2. Dicas Importantes */
-.grade-dicas {
-    display: grid;
-    gap: 20px;
+.image-item {
+  margin: 0;
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: center;
 }
 
-.cartao-dica {
-    background: var(--fundo-cartao);
-    padding: 20px;
-    border-radius: 15px;
-    border-left: 15px solid var(--primaria);
+.image-item img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.cartao-dica strong {
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-    color: var(--primaria);
+.image-item figcaption {
+  padding: 10px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #424242;
 }
 
-/* 3. Direitos na Internet */
-.caixa-direitos {
-    background-color: #fff9e6;
-    padding: 40px;
-    border-radius: 15px;
-    border: 2px dashed var(--primaria);
+/* Botão de Link Externo */
+.external-btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 8px;
+  transition: background-color 0.2s;
 }
 
-.caixa-direitos p {
-    margin-bottom: 15px;
+.external-btn:hover {
+  background-color: #002171;
 }
 
-/* --- SEÇÃO GOLPES --- */
-.alerta-golpe {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 20px;
-}
-
-.alerta-golpe li {
-    background: #fff5f5;
-    padding: 25px;
-    border-radius: 20px;
-    border: 2px solid #ffe3e3;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    transition: background 0.2s;
-}
-
-.alerta-golpe li:hover {
-    background: #fff1f1;
-}
-
-.alerta-golpe .icone-alerta {
-    font-size: 2.5rem;
-    background: var(--branco);
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    flex-shrink: 0;
-    box-shadow: 0 4px 8px rgba(211, 47, 47, 0.1);
-}
-
-footer {
-    display: block;
-    background: var(--primaria);
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
-}
-
-/* Ajustes para Celular */
-@media (max-width: 600px) {
-    body {
-        font-size: 20px;
-    }
-
-    .banner h1 {
-        font-size: 1.8rem;
-        padding-top: 80px;
-    }
-
-    .botao-ajuda {
-        width: 100%;
-        padding: 15px;
-    }
-}
-
-/* Rolagem suave para o botão funcionar elegantemente */
-html {
-    scroll-behavior: smooth;
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 0.9em;
 }

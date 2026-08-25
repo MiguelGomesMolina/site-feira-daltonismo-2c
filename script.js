@@ -1,77 +1,50 @@
-// CÓDIGO DO MODAL 
-const btnAjuda = document.querySelector(".botao-ajuda");
-const btnFechar = document.querySelector(".botao-fechar");
-const modal = document.querySelector(".modal-fundo");
+// Variable global para o tamanho da fonte
+let currentFontSize = 16;
 
-if (btnAjuda && modal) {
-    btnAjuda.addEventListener("click", () => modal.style.display = "block");
-}
-if (btnFechar && modal) {
-    btnFechar.addEventListener("click", () => modal.style.display = "none");
-}
+// Função para aumentar e diminuir a fonte
+function changeFontSize(delta) {
+  currentFontSize += delta * 2;
+  
+  // Limites de acessibilidade: mínimo 12px e máximo 28px
+  if (currentFontSize < 12) currentFontSize = 12;
+  if (currentFontSize > 28) currentFontSize = 28;
 
-// TAMANHO DE FONTES
-let tamanhoFonteAtual = 16;
-const passo = 2;
-const FONTE_MINIMA = 12;
-const FONTE_MAXIMA = 24;
-
-const btnAumentaFonte = document.getElementById("btnAumentaTexto");
-const btnDiminuiFonte = document.getElementById("btnDiminuiTexto");
-
-if (btnAumentaFonte) {
-    btnAumentaFonte.addEventListener("click", () => {
-        if (tamanhoFonteAtual < FONTE_MAXIMA) {
-            tamanhoFonteAtual += passo;
-            document.documentElement.style.fontSize = `${tamanhoFonteAtual}px`;
-        }
-    });
+  document.documentElement.style.setProperty('--font-size-base', `${currentFontSize}px`);
 }
 
-if (btnDiminuiFonte) {
-    btnDiminuiFonte.addEventListener("click", () => {
-        if (tamanhoFonteAtual > FONTE_MINIMA) {
-            tamanhoFonteAtual -= passo;
-            document.documentElement.style.fontSize = `${tamanhoFonteAtual}px`;
-        }
-    });
-}
+// Leitura em voz alta via Web Speech API
+let isReading = false;
 
-// LEITURA DE TELA (TEXT-TO-SPEECH)
-let lendo = false;
-const btnLeitura = document.querySelector(".botao-leitura");
+function toggleSpeech() {
+  const btn = document.getElementById('btn-speech');
 
-if (btnLeitura) {
-    btnLeitura.addEventListener("click", alternarLeitura);
-}
+  if ('speechSynthesis' in window) {
+    if (isReading) {
+      window.speechSynthesis.cancel();
+      isReading = false;
+      btn.innerText = '🔊 Ouvir Texto';
+    } else {
+      // Captura o texto contido na tag <main>
+      const mainContent = document.getElementById('conteudo-principal').innerText;
+      const utterance = new SpeechSynthesisUtterance(mainContent);
+      utterance.lang = 'pt-BR';
+      utterance.rate = 1.0;
 
-function alternarLeitura() {
-    // Se não houver suporte no navegador
-    if (!('speechSynthesis' in window)) return;
+      utterance.onend = () => {
+        isReading = false;
+        btn.innerText = '🔊 Ouvir Texto';
+      };
 
-    if (speechSynthesis.speaking) {
-        if (speechSynthesis.paused) {
-            speechSynthesis.resume();
-        } else {
-            speechSynthesis.pause();
-        }
-        return;
+      utterance.onerror = () => {
+        isReading = false;
+        btn.innerText = '🔊 Ouvir Texto';
+      };
+
+      window.speechSynthesis.speak(utterance);
+      isReading = true;
+      btn.innerText = '⏹️ Parar Leitura';
     }
-
-    const conteudo = document.querySelector("main");
-    if (!conteudo) return;
-
-    const fala = new SpeechSynthesisUtterance(conteudo.innerText);
-    fala.lang = "pt-BR";
-
-    fala.onend = finalizarLeitura;
-    fala.onerror = finalizarLeitura; // Limpa o estado em caso de erro
-
-    speechSynthesis.cancel(); // Limpa leituras anteriores pendentes
-    speechSynthesis.speak(fala);
-    lendo = true;
-}
-
-function finalizarLeitura() {
-    lendo = false;
+  } else {
+    alert('Seu navegador não possui suporte para leitura de voz.');
+  }
 }
